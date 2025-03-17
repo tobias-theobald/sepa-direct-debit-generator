@@ -32,7 +32,7 @@ const Stepper: React.FC<StepperProps> = ({ steps, currentStep }) => {
             {/* Outer circle - progress ring */}
             <div className="w-[5.5rem] h-[5.5rem] rounded-full border-4 border-gray-100 flex items-center justify-center">
               {/* Inner circle with step number */}
-              <div className="w-[4.2rem] h-[4.2rem] rounded-full bg-white shadow-sm flex items-center justify-center">
+              <div className="w-[4.2rem] h-[4.2rem] rounded-full bg-white shadow-xs flex items-center justify-center">
                 <span className="text-sm font-medium whitespace-nowrap text-gray-700">
                   {currentStep} {t('common.of')} {steps.length}
                 </span>

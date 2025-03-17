@@ -140,7 +140,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
               name="name"
               placeholder="Mein Verein e.V."
               onChange={handleChange}
-              className={`w-full px-3 py-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`w-full px-3 py-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             />
             {errors.name && (
               <p className="mt-1 text-sm text-red-600">{errors.name}</p>
@@ -165,7 +165,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
                 }));
               }}
               placeholder="DE40 9876 5432 9876 5432 10"
-              className={`w-full px-3 py-2 border ${errors.iban ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`w-full px-3 py-2 border ${errors.iban ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             />
             {errors.iban && (
               <p className="mt-1 text-sm text-red-600">{errors.iban}</p>
@@ -182,7 +182,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
               value={clubInfo.bic}
               onChange={handleChange}
               placeholder="BANKDE12"
-              className={`w-full px-3 py-2 border ${errors.bic ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`w-full px-3 py-2 border ${errors.bic ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             />
             {errors.bic && (
               <p className="mt-1 text-sm text-red-600">{errors.bic}</p>
@@ -199,7 +199,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
               value={clubInfo.creditorId}
               onChange={handleChange}
               placeholder="DE98ZZZ09999999999"
-              className={`w-full px-3 py-2 border ${errors.creditorId ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`w-full px-3 py-2 border ${errors.creditorId ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             />
             {errors.creditorId && (
               <p className="mt-1 text-sm text-red-600">{errors.creditorId}</p>
@@ -216,7 +216,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
               value={clubInfo.executionDaysInFuture}
               onChange={handleChange}
               min="1"
-              className={`w-full px-3 py-2 border ${errors.executionDaysInFuture ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`w-full px-3 py-2 border ${errors.executionDaysInFuture ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             />
             {errors.executionDaysInFuture && (
               <p className="mt-1 text-sm text-red-600">{errors.executionDaysInFuture}</p>
@@ -237,7 +237,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
               value={clubInfo.purpose}
               onChange={handleChange}
               placeholder="Mitgliedsbeitrag 2025"
-              className={`w-full px-3 py-2 border ${errors.purpose ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`w-full px-3 py-2 border ${errors.purpose ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             />
             {errors.purpose && (
               <p className="mt-1 text-sm text-red-600">{errors.purpose}</p>
@@ -254,7 +254,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
               value={clubInfo.reference}
               onChange={handleChange}
               placeholder="VEREIN.BEITRAG.2025-"
-              className={`w-full px-3 py-2 border ${errors.reference ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`w-full px-3 py-2 border ${errors.reference ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             />
             {errors.reference && (
               <p className="mt-1 text-sm text-red-600">{errors.reference}</p>
@@ -276,7 +276,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
               step="0.01"
               min="0"
               placeholder="25"
-              className={`w-full px-3 py-2 border ${errors.membershipFee ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`w-full px-3 py-2 border ${errors.membershipFee ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             />
             {errors.membershipFee && (
               <p className="mt-1 text-sm text-red-600">{errors.membershipFee}</p>
@@ -290,7 +290,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
         <div className="mt-4 sm:mt-8 flex justify-center sm:justify-end">
           <button
             type="submit"
-            className={`px-6 py-2 w-full sm:w-auto bg-blue-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+            className={`px-6 py-2 w-full sm:w-auto bg-blue-600 text-white rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
               !isFormValid ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-700'
             }`}
             disabled={!isFormValid}

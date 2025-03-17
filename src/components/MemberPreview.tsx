@@ -69,7 +69,7 @@ const MemberPreview: React.FC<MemberPreviewProps> = ({ members, clubInfo, defaul
         <div className="flex justify-between">
           <button
             onClick={onBack}
-            className="px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             {t('memberPreview.back')}
           </button>
@@ -184,14 +184,14 @@ const MemberPreview: React.FC<MemberPreviewProps> = ({ members, clubInfo, defaul
       <div className="mt-4 sm:mt-8 flex flex-col sm:flex-row sm:justify-between gap-3">
         <button
           onClick={onBack}
-          className="w-full sm:w-auto px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 order-2 sm:order-1"
+          className="w-full sm:w-auto px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 order-2 sm:order-1"
         >
           {t('memberPreview.back')}
         </button>
         
         <button
           onClick={onNext}
-          className={`w-full sm:w-auto px-6 py-2 bg-blue-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 order-1 sm:order-2 ${
+          className={`w-full sm:w-auto px-6 py-2 bg-blue-600 text-white rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 order-1 sm:order-2 ${
             !isFormValid ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-700'
           }`}
           disabled={!isFormValid}

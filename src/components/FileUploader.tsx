@@ -129,7 +129,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBac
           id="hasHeader"
           checked={hasHeader}
           onChange={handleHeaderChange}
-          className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+          className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded-sm"
         />
         <label htmlFor="hasHeader" className="ml-2 block text-sm text-gray-700">
           {t('fileUpload.hasHeaderRow')}
@@ -168,7 +168,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBac
         <button
           type="button"
           onClick={onBack}
-          className="w-full sm:w-auto px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 order-2 sm:order-1"
+          className="w-full sm:w-auto px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 order-2 sm:order-1"
         >
           {t('common.back')}
         </button>
@@ -177,7 +177,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBac
           type="button"
           onClick={onNext}
           disabled={!file || isLoading}
-          className={`w-full sm:w-auto px-6 py-2 bg-blue-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 order-1 sm:order-2 ${
+          className={`w-full sm:w-auto px-6 py-2 bg-blue-600 text-white rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 order-1 sm:order-2 ${
             !file || isLoading
               ? 'opacity-50 cursor-not-allowed'
               : 'hover:bg-blue-700'

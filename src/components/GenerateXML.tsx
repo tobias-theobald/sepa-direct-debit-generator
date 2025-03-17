@@ -70,7 +70,7 @@ const GenerateXML: React.FC<GenerateXMLProps> = ({ clubInfo, members, onBack, on
         <div className="flex justify-between">
           <button
             onClick={onBack}
-            className="px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             {t('generateXml.back')}
           </button>
@@ -120,7 +120,7 @@ const GenerateXML: React.FC<GenerateXMLProps> = ({ clubInfo, members, onBack, on
         <a
           href={downloadUrl}
           download={fileName}
-          className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 inline-flex items-center justify-center"
+          className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 inline-flex items-center justify-center"
         >
           <svg
             className="w-5 h-5 mr-2"
@@ -141,7 +141,7 @@ const GenerateXML: React.FC<GenerateXMLProps> = ({ clubInfo, members, onBack, on
         
         <button
           onClick={handleCopyToClipboard}
-          className="px-6 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 inline-flex items-center justify-center"
+          className="px-6 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 focus:outline-hidden focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 inline-flex items-center justify-center"
         >
           <svg
             className="w-5 h-5 mr-2"
@@ -164,14 +164,14 @@ const GenerateXML: React.FC<GenerateXMLProps> = ({ clubInfo, members, onBack, on
       <div className="flex flex-col-reverse sm:flex-row justify-between gap-4">
         <button
           onClick={onBack}
-          className="px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          className="px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           {t('generateXml.back')}
         </button>
         
         <button
           onClick={onReset}
-          className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+          className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-hidden focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
         >
           {t('generateXml.newDebit')}
         </button>

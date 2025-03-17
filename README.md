@@ -2,7 +2,9 @@
 
 A web application for generating SEPA (Single Euro Payments Area) direct debit XML files for clubs and organizations.
 
-Please note: This project has been generated with the help of bold.diy and Claude Code.
+Please note: 
+* This project has been generated with the help of bold.diy and Claude Code. It does not reflect my usual code style and quality. 
+* It is also not as well tested as I'd like it to be.
 
 ## What It Does
 

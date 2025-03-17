@@ -98,7 +98,7 @@ const ColumnMapper: React.FC<ColumnMapperProps> = ({
             <select
               value={columnMapping.name !== undefined ? columnMapping.name : -1}
               onChange={(e) => handleColumnSelect('name', parseInt(e.target.value))}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500"
             >
               <option value={-1}>{t('columnMapping.notAssigned')}</option>
               {columnHeaders.map((header, index) => (
@@ -117,7 +117,7 @@ const ColumnMapper: React.FC<ColumnMapperProps> = ({
             <select
               value={columnMapping.firstName !== undefined ? columnMapping.firstName : -1}
               onChange={(e) => handleColumnSelect('firstName', parseInt(e.target.value))}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500"
             >
               <option value={-1}>{t('columnMapping.notAssigned')}</option>
               {columnHeaders.map((header, index) => (
@@ -136,7 +136,7 @@ const ColumnMapper: React.FC<ColumnMapperProps> = ({
             <select
               value={columnMapping.lastName !== undefined ? columnMapping.lastName : -1}
               onChange={(e) => handleColumnSelect('lastName', parseInt(e.target.value))}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500"
             >
               <option value={-1}>{t('columnMapping.notAssigned')}</option>
               {columnHeaders.map((header, index) => (
@@ -157,7 +157,7 @@ const ColumnMapper: React.FC<ColumnMapperProps> = ({
               onChange={(e) => handleColumnSelect('iban', parseInt(e.target.value))}
               className={`w-full px-3 py-2 border ${
                 columnMapping.iban === -1 ? 'border-red-300' : 'border-gray-300'
-              } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             >
               <option value={-1}>{t('columnMapping.pleaseSelect')}</option>
               {columnHeaders.map((header, index) => (
@@ -178,7 +178,7 @@ const ColumnMapper: React.FC<ColumnMapperProps> = ({
               onChange={(e) => handleColumnSelect('mandateDate', parseInt(e.target.value))}
               className={`w-full px-3 py-2 border ${
                 columnMapping.mandateDate === -1 ? 'border-red-300' : 'border-gray-300'
-              } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             >
               <option value={-1}>{t('columnMapping.pleaseSelect')}</option>
               {columnHeaders.map((header, index) => (
@@ -199,7 +199,7 @@ const ColumnMapper: React.FC<ColumnMapperProps> = ({
               onChange={(e) => handleColumnSelect('mandateReference', parseInt(e.target.value))}
               className={`w-full px-3 py-2 border ${
                 columnMapping.mandateReference === -1 ? 'border-red-300' : 'border-gray-300'
-              } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             >
               <option value={-1}>{t('columnMapping.pleaseSelect')}</option>
               {columnHeaders.map((header, index) => (
@@ -218,7 +218,7 @@ const ColumnMapper: React.FC<ColumnMapperProps> = ({
             <select
               value={columnMapping.fee !== undefined ? columnMapping.fee : -1}
               onChange={(e) => handleColumnSelect('fee', parseInt(e.target.value))}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500"
             >
               <option value={-1}>{t('columnMapping.notAssigned')}</option>
               {columnHeaders.map((header, index) => (
@@ -295,14 +295,14 @@ const ColumnMapper: React.FC<ColumnMapperProps> = ({
           <button
             type="button"
             onClick={onBack}
-            className="w-full sm:w-auto px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 order-2 sm:order-1"
+            className="w-full sm:w-auto px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 order-2 sm:order-1"
           >
             {t('columnMapping.back')}
           </button>
           
           <button
             type="submit"
-            className={`w-full sm:w-auto px-6 py-2 bg-blue-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 order-1 sm:order-2 ${
+            className={`w-full sm:w-auto px-6 py-2 bg-blue-600 text-white rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 order-1 sm:order-2 ${
               !isValid ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-700'
             }`}
             disabled={!isValid}
