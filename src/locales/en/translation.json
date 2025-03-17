@@ -28,13 +28,32 @@
     "requiredField": "Required field",
     "firstName": "First Name",
     "lastName": "Last Name",
+    "fullName": "Full Name",
     "iban": "IBAN",
     "amount": "Amount",
     "reference": "Reference",
+    "mandateDate": "Mandate Date",
+    "mandateReference": "Mandate Reference Suffix",
+    "fee": "Individual Fee",
     "email": "Email",
     "selectColumn": "Select column",
     "continue": "Continue",
     "back": "Back",
+    "preview": "Data Preview",
+    "hide": "Hide",
+    "show": "Show data preview",
+    "notAssigned": "-- Not assigned --",
+    "pleaseSelect": "-- Please select --",
+    "defaultColumn": "Column {number}",
+    "descriptions": {
+      "fullName": "Full name of the member",
+      "firstName": "Alternative to \"Full Name\": First name of the member",
+      "lastName": "Alternative to \"Full Name\": Last name of the member",
+      "iban": "Member's IBAN for direct debit",
+      "mandateDate": "Date when the direct debit mandate was granted, often the joining date",
+      "mandateReference": "Unique reference for the member (e.g. membership number)",
+      "fee": "Individual fee (if different from the standard)"
+    },
     "errors": {
       "requiredMapping": "All required fields must be mapped"
     }
@@ -47,8 +66,11 @@
     "creditorId": "Creditor ID",
     "mandateReference": "Mandate Reference Prefix",
     "mandateReferenceHelp": "This will be combined with each member's reference to create complete mandate references",
-    "executionDate": "Execution Date",
+    "executionDate": "Execution Date (Days in Future)",
+    "executionDateHelp": "Number of days in the future when the direct debit will be executed",
     "purpose": "Purpose",
+    "membershipFee": "Membership Fee (€)",
+    "membershipFeeHelp": "This amount will be used as the default if no individual fee is specified in the CSV file.",
     "continue": "Continue",
     "back": "Back",
     "errors": {
@@ -60,6 +82,7 @@
   "memberPreview": {
     "title": "Member Preview",
     "noMembers": "No members found",
+    "checkFileAndMapping": "Please check your CSV file and column mapping",
     "firstName": "First Name",
     "lastName": "Last Name",
     "iban": "IBAN",
@@ -67,7 +90,26 @@
     "reference": "Reference",
     "email": "Email",
     "continue": "Continue",
-    "back": "Back"
+    "back": "Back",
+    "notices": "Notices",
+    "dataProblems": "Problems were found in some member data. Please check the marked entries.",
+    "numberOfMembers": "Number of members",
+    "standardFee": "Standard membership fee per person",
+    "totalAmount": "Total amount",
+    "name": "Name",
+    "combinedReference": "Mandate Reference (Combined)",
+    "referenceShort": "Ref.",
+    "mandateDate": "Mandate Date",
+    "dateShort": "Date",
+    "fee": "Fee (€)",
+    "unknown": "Unknown",
+    "generateXml": "Generate SEPA XML",
+    "correctErrors": "Please correct the marked errors before continuing.",
+    "errors": {
+      "missingIban": "IBAN missing",
+      "missingMandateReference": "Mandate reference missing",
+      "missingMandateDate": "Mandate date missing"
+    }
   },
   "generateXml": {
     "title": "Generate SEPA XML",
@@ -77,7 +119,17 @@
     "generateButton": "Generate XML",
     "downloadButton": "Download XML",
     "back": "Back",
-    "success": "XML file generated successfully"
+    "success": "XML file generated successfully",
+    "copyToClipboard": "Copy to clipboard",
+    "club": "Club",
+    "numberOfDebits": "Number of direct debits",
+    "executionDate": "Execution date",
+    "xmlContent": "XML Content",
+    "newDebit": "Create new direct debit",
+    "generatedSuccessfully": "The SEPA XML file has been successfully generated! You can now download the file or copy the content to clipboard.",
+    "copiedToClipboard": "XML copied to clipboard!",
+    "copyError": "Error copying:",
+    "errorGenerating": "Error generating XML"
   },
   "common": {
     "next": "Next",
@@ -86,7 +138,8 @@
     "save": "Save",
     "loading": "Loading",
     "error": "Error",
-    "success": "Success"
+    "success": "Success",
+    "of": "of"
   },
   "validation": {
     "required": "This field is required",

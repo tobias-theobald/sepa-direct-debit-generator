@@ -126,18 +126,19 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md max-w-6xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">{t('clubInfo.title')}</h2>
+      <h2 className="hidden sm:block text-2xl font-bold mb-6 text-gray-800">{t('clubInfo.title')}</h2>
       
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="col-span-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Full width on all screens */}
+          <div className="col-span-1 sm:col-span-2">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               {t('clubInfo.creditorName')}
             </label>
             <input
               type="text"
               name="name"
-							placeholder="Mein Verein e.V."
+              placeholder="Mein Verein e.V."
               onChange={handleChange}
               className={`w-full px-3 py-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
             />
@@ -146,7 +147,8 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
             )}
           </div>
           
-          <div>
+          {/* Responsive fields - full width on mobile, half width on larger screens */}
+          <div className="col-span-1">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               {t('clubInfo.creditorIban')}
             </label>
@@ -162,7 +164,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
                   iban: formatIbanForDisplay(prev.iban) 
                 }));
               }}
-							placeholder="DE40 9876 5432 9876 5432 10"
+              placeholder="DE40 9876 5432 9876 5432 10"
               className={`w-full px-3 py-2 border ${errors.iban ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
             />
             {errors.iban && (
@@ -170,7 +172,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
             )}
           </div>
           
-          <div>
+          <div className="col-span-1">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               {t('clubInfo.creditorBic')}
             </label>
@@ -179,7 +181,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
               name="bic"
               value={clubInfo.bic}
               onChange={handleChange}
-							placeholder="BANKDE12"
+              placeholder="BANKDE12"
               className={`w-full px-3 py-2 border ${errors.bic ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
             />
             {errors.bic && (
@@ -187,7 +189,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
             )}
           </div>
           
-          <div>
+          <div className="col-span-1">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               {t('clubInfo.creditorId')}
             </label>
@@ -196,7 +198,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
               name="creditorId"
               value={clubInfo.creditorId}
               onChange={handleChange}
-							placeholder="DE98ZZZ09999999999"
+              placeholder="DE98ZZZ09999999999"
               className={`w-full px-3 py-2 border ${errors.creditorId ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
             />
             {errors.creditorId && (
@@ -204,7 +206,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
             )}
           </div>
           
-          <div>
+          <div className="col-span-1">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               {t('clubInfo.executionDate')}
             </label>
@@ -219,9 +221,13 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
             {errors.executionDaysInFuture && (
               <p className="mt-1 text-sm text-red-600">{errors.executionDaysInFuture}</p>
             )}
+            <p className="mt-1 text-sm text-gray-500">
+              {t('clubInfo.executionDateHelp')}
+            </p>
           </div>
           
-          <div className="col-span-2">
+          {/* Purpose field - full width */}
+          <div className="col-span-1 sm:col-span-2">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               {t('clubInfo.purpose')}
             </label>
@@ -230,7 +236,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
               name="purpose"
               value={clubInfo.purpose}
               onChange={handleChange}
-							placeholder="Mitgliedsbeitrag 2025"
+              placeholder="Mitgliedsbeitrag 2025"
               className={`w-full px-3 py-2 border ${errors.purpose ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
             />
             {errors.purpose && (
@@ -238,7 +244,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
             )}
           </div>
           
-          <div>
+          <div className="col-span-1">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               {t('clubInfo.mandateReference')}
             </label>
@@ -247,7 +253,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
               name="reference"
               value={clubInfo.reference}
               onChange={handleChange}
-							placeholder="VEREIN.BEITRAG.2025-"
+              placeholder="VEREIN.BEITRAG.2025-"
               className={`w-full px-3 py-2 border ${errors.reference ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
             />
             {errors.reference && (
@@ -258,9 +264,9 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
             </p>
           </div>
           
-          <div>
+          <div className="col-span-1">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Mitgliedsbeitrag (€)
+              {t('clubInfo.membershipFee')}
             </label>
             <input
               type="number"
@@ -269,22 +275,22 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
               onChange={handleChange}
               step="0.01"
               min="0"
-							placeholder="25"
+              placeholder="25"
               className={`w-full px-3 py-2 border ${errors.membershipFee ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
             />
             {errors.membershipFee && (
               <p className="mt-1 text-sm text-red-600">{errors.membershipFee}</p>
             )}
             <p className="mt-1 text-sm text-gray-500">
-              Dieser Betrag wird als Standard verwendet, wenn in der CSV-Datei kein individueller Beitrag angegeben ist.
+              {t('clubInfo.membershipFeeHelp')}
             </p>
           </div>
         </div>
         
-        <div className="mt-8 flex justify-end">
+        <div className="mt-4 sm:mt-8 flex justify-center sm:justify-end">
           <button
             type="submit"
-            className={`px-6 py-2 bg-blue-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+            className={`px-6 py-2 w-full sm:w-auto bg-blue-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
               !isFormValid ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-700'
             }`}
             disabled={!isFormValid}

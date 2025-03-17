@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface StepperProps {
   steps: string[];
@@ -6,6 +7,64 @@ interface StepperProps {
 }
 
 const Stepper: React.FC<StepperProps> = ({ steps, currentStep }) => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Mobile view - radial step indicator
+  if (isMobile) {
+    const currentStepIndex = currentStep - 1;
+    const currentStepName = steps[currentStepIndex] || '';
+    
+    return (
+      <div className="w-full py-3">
+        <div className="flex items-center px-4">
+          {/* Radial step indicator */}
+          <div className="relative">
+            {/* Outer circle - progress ring */}
+            <div className="w-[5.5rem] h-[5.5rem] rounded-full border-4 border-gray-100 flex items-center justify-center">
+              {/* Inner circle with step number */}
+              <div className="w-[4.2rem] h-[4.2rem] rounded-full bg-white shadow-sm flex items-center justify-center">
+                <span className="text-sm font-medium whitespace-nowrap text-gray-700">
+                  {currentStep} {t('common.of')} {steps.length}
+                </span>
+              </div>
+              
+              {/* Progress circle overlay */}
+              <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+                <circle 
+                  cx="50" 
+                  cy="50" 
+                  r="46" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="8" 
+                  strokeDasharray="289.02652413026095" 
+                  strokeDashoffset={289.02652413026095 * (1 - currentStep / steps.length)}
+                  className="text-blue-500"
+                />
+              </svg>
+            </div>
+          </div>
+          
+          {/* Step name */}
+          <div className="ml-4 font-bold text-gray-800 text-lg">
+            {currentStepName}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop view - horizontal stepper
   return (
     <div className="w-full py-6">
       <div className="flex items-center">

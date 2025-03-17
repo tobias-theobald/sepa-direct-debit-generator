@@ -28,13 +28,32 @@
     "requiredField": "Pflichtfeld",
     "firstName": "Vorname",
     "lastName": "Nachname",
+    "fullName": "Name",
     "iban": "IBAN",
     "amount": "Betrag",
     "reference": "Referenz",
+    "mandateDate": "Datum des Lastschriftmandats",
+    "mandateReference": "Mandatsreferenz-Suffix",
+    "fee": "Individueller Beitrag",
     "email": "E-Mail",
     "selectColumn": "Spalte auswählen",
     "continue": "Weiter",
     "back": "Zurück",
+    "preview": "Datenvorschau",
+    "hide": "Ausblenden",
+    "show": "Datenvorschau anzeigen",
+    "notAssigned": "-- Nicht zugeordnet --",
+    "pleaseSelect": "-- Bitte auswählen --",
+    "defaultColumn": "Spalte {number}",
+    "descriptions": {
+      "fullName": "Vollständiger Name des Mitglieds",
+      "firstName": "Alternative zu \"Name\": Vorname des Mitglieds",
+      "lastName": "Alternative zu \"Name\": Nachname des Mitglieds",
+      "iban": "IBAN des Mitglieds für den Lastschrifteinzug",
+      "mandateDate": "Datum, an dem das Lastschriftmandat erteilt wurde, oft das Beitrittsdatum",
+      "mandateReference": "Eindeutige Referenz des Mitglieds (z.B. Mitgliedsnummer)",
+      "fee": "Individueller Beitrag (falls abweichend vom Standard)"
+    },
     "errors": {
       "requiredMapping": "Alle Pflichtfelder müssen zugeordnet werden"
     }
@@ -47,8 +66,11 @@
     "creditorId": "Gläubiger-ID",
     "mandateReference": "Mandatsreferenz-Präfix",
     "mandateReferenceHelp": "Dies wird mit der Referenz jedes Mitglieds kombiniert, um die vollständigen Mandatsreferenzen zu erstellen",
-    "executionDate": "Ausführungsdatum",
+    "executionDate": "Ausführungsdatum (Tage in der Zukunft)",
+    "executionDateHelp": "Anzahl der Tage in der Zukunft, an denen die Lastschrift ausgeführt wird",
     "purpose": "Verwendungszweck",
+    "membershipFee": "Mitgliedsbeitrag (€)",
+    "membershipFeeHelp": "Dieser Betrag wird als Standard verwendet, wenn in der CSV-Datei kein individueller Beitrag angegeben ist.",
     "continue": "Weiter",
     "back": "Zurück",
     "errors": {
@@ -60,6 +82,7 @@
   "memberPreview": {
     "title": "Mitgliedervorschau",
     "noMembers": "Keine Mitglieder gefunden",
+    "checkFileAndMapping": "Bitte überprüfen Sie Ihre CSV-Datei und die Spaltenzuordnung",
     "firstName": "Vorname",
     "lastName": "Nachname",
     "iban": "IBAN",
@@ -67,7 +90,26 @@
     "reference": "Referenz",
     "email": "E-Mail",
     "continue": "Weiter",
-    "back": "Zurück"
+    "back": "Zurück",
+    "notices": "Hinweise",
+    "dataProblems": "Es wurden Probleme bei einigen Mitgliedsdaten gefunden. Bitte überprüfen Sie die markierten Einträge.",
+    "numberOfMembers": "Anzahl der Mitglieder",
+    "standardFee": "Standard-Mitgliedsbeitrag pro Person",
+    "totalAmount": "Gesamtbetrag",
+    "name": "Name",
+    "combinedReference": "Mandatsreferenz (Kombiniert)",
+    "referenceShort": "Ref.",
+    "mandateDate": "Datum Lastschriftmandat",
+    "dateShort": "Datum",
+    "fee": "Beitrag (€)",
+    "unknown": "Unbekannt",
+    "generateXml": "SEPA-XML generieren",
+    "correctErrors": "Bitte korrigieren Sie die markierten Fehler, bevor Sie fortfahren.",
+    "errors": {
+      "missingIban": "IBAN fehlt",
+      "missingMandateReference": "Mandatsreferenz fehlt",
+      "missingMandateDate": "Datum des Lastschriftmandats fehlt"
+    }
   },
   "generateXml": {
     "title": "SEPA-XML generieren",
@@ -77,7 +119,17 @@
     "generateButton": "XML generieren",
     "downloadButton": "XML herunterladen",
     "back": "Zurück",
-    "success": "XML-Datei erfolgreich generiert"
+    "success": "XML-Datei erfolgreich generiert",
+    "copyToClipboard": "In Zwischenablage kopieren",
+    "club": "Verein",
+    "numberOfDebits": "Anzahl der Lastschriften",
+    "executionDate": "Ausführungsdatum",
+    "xmlContent": "XML-Inhalt",
+    "newDebit": "Neue Lastschrift erstellen",
+    "generatedSuccessfully": "Die SEPA-XML-Datei wurde erfolgreich generiert! Sie können die Datei jetzt herunterladen oder den Inhalt in die Zwischenablage kopieren.",
+    "copiedToClipboard": "XML in die Zwischenablage kopiert!",
+    "copyError": "Fehler beim Kopieren:",
+    "errorGenerating": "Fehler bei der XML-Generierung"
   },
   "common": {
     "next": "Weiter",
@@ -86,7 +138,8 @@
     "save": "Speichern",
     "loading": "Laden",
     "error": "Fehler",
-    "success": "Erfolg"
+    "success": "Erfolg",
+    "of": "von"
   },
   "validation": {
     "required": "Dieses Feld ist erforderlich",

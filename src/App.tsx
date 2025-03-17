@@ -114,10 +114,10 @@ function App() {
   };
   
   return (
-    <div className="min-h-screen bg-gray-100 py-8 px-4">
+    <div className="min-h-screen bg-gray-100 py-4 sm:py-8 px-2 sm:px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-center text-gray-800">
+        <div className="flex justify-between items-center mb-4 sm:mb-8">
+          <h1 className="text-xl sm:text-3xl font-bold text-gray-800">
             {t('app.title')}
           </h1>
           <LanguageSwitcher />
@@ -134,7 +134,7 @@ function App() {
           currentStep={currentStep}
         />
         
-        <div className="mt-8">
+        <div className="mt-3 sm:mt-8">
           {renderStep()}
         </div>
       </div>

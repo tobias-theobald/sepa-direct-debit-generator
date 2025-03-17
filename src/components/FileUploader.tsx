@@ -80,7 +80,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBac
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md max-w-6xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">{t('steps.fileUpload')}</h2>
+      <h2 className="hidden sm:block text-2xl font-bold mb-6 text-gray-800">{t('steps.fileUpload')}</h2>
       
       <div
         className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-blue-500 transition-colors"
@@ -164,11 +164,11 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBac
         </div>
       )}
       
-      <div className="mt-8 flex justify-between">
+      <div className="mt-4 sm:mt-8 flex flex-col sm:flex-row sm:justify-between gap-3">
         <button
           type="button"
           onClick={onBack}
-          className="px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          className="w-full sm:w-auto px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 order-2 sm:order-1"
         >
           {t('common.back')}
         </button>
@@ -177,7 +177,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBac
           type="button"
           onClick={onNext}
           disabled={!file || isLoading}
-          className={`px-6 py-2 bg-blue-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+          className={`w-full sm:w-auto px-6 py-2 bg-blue-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 order-1 sm:order-2 ${
             !file || isLoading
               ? 'opacity-50 cursor-not-allowed'
               : 'hover:bg-blue-700'
