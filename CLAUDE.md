@@ -1,10 +1,10 @@
 # SEPA Project Developer Guide
 
 ## Build & Development Commands
-- `yarn dev` - Start development server
-- `yarn build` - Build for production
-- `yarn lint` - Run ESLint on all files
-- `yarn preview` - Preview production build locally
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint on all files
+- `npm run preview` - Preview production build locally
 
 ## Code Style Guidelines
 - **TypeScript:** Use strict type checking with Zod for schema validation
