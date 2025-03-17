@@ -1,0 +1,102 @@
+{
+  "app": {
+    "title": "SEPA-Lastschrift Generator"
+  },
+  "steps": {
+    "fileUpload": "Datei hochladen",
+    "columnMapping": "Spalten zuordnen",
+    "clubInfo": "Vereinsinformationen",
+    "preview": "Mitgliedervorschau",
+    "generate": "XML generieren"
+  },
+  "fileUpload": {
+    "dragDrop": "Datei hierher ziehen und ablegen",
+    "orClick": "oder klicken zum Durchsuchen",
+    "acceptedFormats": "Akzeptierte Formate: CSV, Excel",
+    "fileSelected": "Datei ausgewählt:",
+    "uploadButton": "Hochladen",
+    "hasHeaderRow": "Erste Zeile enthält Spaltenüberschriften",
+    "preview": "Vorschau",
+    "errors": {
+      "noFile": "Bitte wählen Sie eine Datei aus",
+      "invalidFormat": "Ungültiges Dateiformat. Bitte laden Sie eine CSV- oder Excel-Datei hoch"
+    }
+  },
+  "columnMapping": {
+    "title": "Spalten zuordnen",
+    "instructions": "Ordnen Sie Ihre Dateispalten den erforderlichen Feldern zu",
+    "requiredField": "Pflichtfeld",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "iban": "IBAN",
+    "amount": "Betrag",
+    "reference": "Referenz",
+    "email": "E-Mail",
+    "selectColumn": "Spalte auswählen",
+    "continue": "Weiter",
+    "back": "Zurück",
+    "errors": {
+      "requiredMapping": "Alle Pflichtfelder müssen zugeordnet werden"
+    }
+  },
+  "clubInfo": {
+    "title": "Vereinsinformationen",
+    "creditorName": "Gläubigername",
+    "creditorIban": "Gläubiger-IBAN",
+    "creditorBic": "Gläubiger-BIC",
+    "creditorId": "Gläubiger-ID",
+    "mandateReference": "Mandatsreferenz-Präfix",
+    "mandateReferenceHelp": "Dies wird mit der Referenz jedes Mitglieds kombiniert, um die vollständigen Mandatsreferenzen zu erstellen",
+    "executionDate": "Ausführungsdatum",
+    "purpose": "Verwendungszweck",
+    "continue": "Weiter",
+    "back": "Zurück",
+    "errors": {
+      "invalidIban": "Bitte geben Sie eine gültige IBAN ein",
+      "invalidBic": "Bitte geben Sie eine gültige BIC ein",
+      "requiredField": "Dieses Feld ist erforderlich"
+    }
+  },
+  "memberPreview": {
+    "title": "Mitgliedervorschau",
+    "noMembers": "Keine Mitglieder gefunden",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "iban": "IBAN",
+    "amount": "Betrag",
+    "reference": "Referenz",
+    "email": "E-Mail",
+    "continue": "Weiter",
+    "back": "Zurück"
+  },
+  "generateXml": {
+    "title": "SEPA-XML generieren",
+    "summary": "Zusammenfassung",
+    "totalMembers": "Gesamtzahl Mitglieder",
+    "totalAmount": "Gesamtbetrag",
+    "generateButton": "XML generieren",
+    "downloadButton": "XML herunterladen",
+    "back": "Zurück",
+    "success": "XML-Datei erfolgreich generiert"
+  },
+  "common": {
+    "next": "Weiter",
+    "back": "Zurück",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "loading": "Laden",
+    "error": "Fehler",
+    "success": "Erfolg"
+  },
+  "validation": {
+    "required": "Dieses Feld ist erforderlich",
+    "invalidIban": "Bitte geben Sie eine gültige IBAN ein",
+    "invalidBic": "Bitte geben Sie eine gültige BIC ein",
+    "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "invalidAmount": "Bitte geben Sie einen gültigen Betrag ein"
+  },
+  "language": {
+    "en": "Englisch",
+    "de": "Deutsch"
+  }
+}

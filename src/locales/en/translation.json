@@ -1,0 +1,102 @@
+{
+  "app": {
+    "title": "SEPA Direct Debit Generator"
+  },
+  "steps": {
+    "fileUpload": "Upload File",
+    "columnMapping": "Map Columns",
+    "clubInfo": "Club Information",
+    "preview": "Member Preview",
+    "generate": "Generate XML"
+  },
+  "fileUpload": {
+    "dragDrop": "Drag and drop your file here",
+    "orClick": "or click to browse",
+    "acceptedFormats": "Accepted formats: CSV, Excel",
+    "fileSelected": "File selected:",
+    "uploadButton": "Upload",
+    "hasHeaderRow": "First row contains headers",
+    "preview": "Preview",
+    "errors": {
+      "noFile": "Please select a file",
+      "invalidFormat": "Invalid file format. Please upload a CSV or Excel file"
+    }
+  },
+  "columnMapping": {
+    "title": "Map your columns",
+    "instructions": "Match your file columns to the required fields",
+    "requiredField": "Required field",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "iban": "IBAN",
+    "amount": "Amount",
+    "reference": "Reference",
+    "email": "Email",
+    "selectColumn": "Select column",
+    "continue": "Continue",
+    "back": "Back",
+    "errors": {
+      "requiredMapping": "All required fields must be mapped"
+    }
+  },
+  "clubInfo": {
+    "title": "Club Information",
+    "creditorName": "Creditor Name",
+    "creditorIban": "Creditor IBAN",
+    "creditorBic": "Creditor BIC",
+    "creditorId": "Creditor ID",
+    "mandateReference": "Mandate Reference Prefix",
+    "mandateReferenceHelp": "This will be combined with each member's reference to create complete mandate references",
+    "executionDate": "Execution Date",
+    "purpose": "Purpose",
+    "continue": "Continue",
+    "back": "Back",
+    "errors": {
+      "invalidIban": "Please enter a valid IBAN",
+      "invalidBic": "Please enter a valid BIC",
+      "requiredField": "This field is required"
+    }
+  },
+  "memberPreview": {
+    "title": "Member Preview",
+    "noMembers": "No members found",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "iban": "IBAN",
+    "amount": "Amount",
+    "reference": "Reference",
+    "email": "Email",
+    "continue": "Continue",
+    "back": "Back"
+  },
+  "generateXml": {
+    "title": "Generate SEPA XML",
+    "summary": "Summary",
+    "totalMembers": "Total Members",
+    "totalAmount": "Total Amount",
+    "generateButton": "Generate XML",
+    "downloadButton": "Download XML",
+    "back": "Back",
+    "success": "XML file generated successfully"
+  },
+  "common": {
+    "next": "Next",
+    "back": "Back",
+    "cancel": "Cancel",
+    "save": "Save",
+    "loading": "Loading",
+    "error": "Error",
+    "success": "Success"
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalidIban": "Please enter a valid IBAN",
+    "invalidBic": "Please enter a valid BIC",
+    "invalidEmail": "Please enter a valid email address",
+    "invalidAmount": "Please enter a valid amount"
+  },
+  "language": {
+    "en": "English",
+    "de": "German"
+  }
+}

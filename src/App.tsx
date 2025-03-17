@@ -1,14 +1,17 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Stepper from './components/Stepper';
 import ClubInfoForm from './components/ClubInfoForm';
 import FileUploader from './components/FileUploader';
 import ColumnMapper from './components/ColumnMapper';
 import MemberPreview from './components/MemberPreview';
 import GenerateXML from './components/GenerateXML';
+import LanguageSwitcher from './components/LanguageSwitcher';
 import { ClubInfo, Member, ColumnMapping } from './types';
 import { mapFileToMembers } from './utils/fileParser';
 
 function App() {
+  const { t } = useTranslation();
   const [currentStep, setCurrentStep] = useState(1);
   const [clubInfo, setClubInfo] = useState<ClubInfo>({
     name: '',
@@ -113,17 +116,20 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-100 py-8 px-4">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
-          SEPA-Lastschrift Generator
-        </h1>
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold text-center text-gray-800">
+            {t('app.title')}
+          </h1>
+          <LanguageSwitcher />
+        </div>
         
         <Stepper
           steps={[
-            'Vereinsinformationen',
-            'Datei hochladen',
-            'Spalten zuordnen',
-            'Mitglieder prüfen',
-            'XML generieren'
+            t('steps.clubInfo'),
+            t('steps.fileUpload'),
+            t('steps.columnMapping'),
+            t('steps.preview'),
+            t('steps.generate')
           ]}
           currentStep={currentStep}
         />

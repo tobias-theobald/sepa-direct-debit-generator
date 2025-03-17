@@ -119,7 +119,7 @@ const MemberPreview: React.FC<MemberPreviewProps> = ({ members, clubInfo, defaul
                 IBAN
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Mandatsreferenz
+                Mandatsreferenz (Kombiniert)
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Datum Lastschriftmandat
@@ -151,7 +151,7 @@ const MemberPreview: React.FC<MemberPreviewProps> = ({ members, clubInfo, defaul
                     {formatIBAN(member.iban)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {member.mandateReference || ''}
+                    {clubInfo?.reference ? `${clubInfo.reference}${member.mandateReference || ''}` : member.mandateReference || ''}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {member.mandateDate || ''}

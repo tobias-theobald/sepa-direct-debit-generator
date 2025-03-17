@@ -1,4 +1,5 @@
 import SEPA from 'sepa';
+import i18n from './i18n';
 
 /**
  * Validates an IBAN using the SEPA library
@@ -11,7 +12,7 @@ export const validateIBAN = (iban: string): { isValid: boolean; message?: string
     if (!iban) {
       return {
         isValid: false,
-        message: 'IBAN fehlt.'
+        message: i18n.t('validation.required')
       };
     }
     
@@ -27,13 +28,13 @@ export const validateIBAN = (iban: string): { isValid: boolean; message?: string
     
     return {
       isValid: false,
-      message: 'IBAN ist ungültig.'
+      message: i18n.t('validation.invalidIban')
     };
   } catch (error) {
     console.error('Error validating IBAN:', error);
     return {
       isValid: false,
-      message: 'IBAN-Format ist ungültig.'
+      message: i18n.t('validation.invalidIban')
     };
   }
 };
@@ -49,7 +50,7 @@ export const validateBIC = (bic: string): { isValid: boolean; message?: string }
     if (!bic) {
       return {
         isValid: false,
-        message: 'BIC fehlt.'
+        message: i18n.t('validation.required')
       };
     }
     
@@ -65,13 +66,13 @@ export const validateBIC = (bic: string): { isValid: boolean; message?: string }
     
     return {
       isValid: false,
-      message: 'BIC ist ungültig. BIC muss 8 oder 11 Zeichen lang sein.'
+      message: i18n.t('validation.invalidBic')
     };
   } catch (error) {
     console.error('Error validating BIC:', error);
     return {
       isValid: false,
-      message: 'BIC-Format ist ungültig.'
+      message: i18n.t('validation.invalidBic')
     };
   }
 };
@@ -87,7 +88,7 @@ export const validateCreditorID = (creditorId: string): { isValid: boolean; mess
     if (!creditorId) {
       return {
         isValid: false,
-        message: 'Gläubiger-ID fehlt.'
+        message: i18n.t('validation.required')
       };
     }
     
@@ -103,13 +104,13 @@ export const validateCreditorID = (creditorId: string): { isValid: boolean; mess
     
     return {
       isValid: false,
-      message: 'Gläubiger-ID ist ungültig.'
+      message: i18n.t('validation.required')
     };
   } catch (error) {
     console.error('Error validating Creditor ID:', error);
     return {
       isValid: false,
-      message: 'Gläubiger-ID-Format ist ungültig.'
+      message: i18n.t('validation.required')
     };
   }
 };

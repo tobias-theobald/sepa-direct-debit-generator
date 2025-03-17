@@ -190,7 +190,7 @@ const ColumnMapper: React.FC<ColumnMapperProps> = ({
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Mandatsreferenz *
+              Mandatsreferenz-Suffix *
             </label>
             <select
               value={columnMapping.mandateReference}
@@ -205,7 +205,8 @@ const ColumnMapper: React.FC<ColumnMapperProps> = ({
               ))}
             </select>
             <p className="mt-1 text-sm text-gray-500">
-              Eindeutige Referenz des Lastschriftmandats (z.B. Mitgliedsnummer)
+              Eindeutige Referenz des Lastschriftmandats (z.B. Mitgliedsnummer). 
+              Diese wird mit dem Präfix aus den Vereinsinformationen kombiniert.
             </p>
           </div>
           

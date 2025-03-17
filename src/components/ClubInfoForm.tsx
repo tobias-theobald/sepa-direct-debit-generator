@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ClubInfo } from '../types';
 import { validateIBAN, validateBIC, validateCreditorID, formatIBAN } from '../utils/validation';
 
@@ -9,13 +10,80 @@ interface ClubInfoFormProps {
 }
 
 const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNext }) => {
+  const { t } = useTranslation();
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
+
+  const validateForm = useCallback((): boolean => {
+    const newErrors: Record<string, string> = {};
+    let isValid = true;
+    
+    // Validate IBAN
+    if (clubInfo.iban) {
+      const ibanResult = validateIBAN(clubInfo.iban);
+      if (!ibanResult.isValid) {
+        isValid = false;
+        newErrors.iban = ibanResult.message || t('validation.invalidIban');
+      }
+    } else {
+      isValid = false;
+      newErrors.iban = t('validation.required');
+    }
+    
+    // Validate BIC
+    if (clubInfo.bic) {
+      const bicResult = validateBIC(clubInfo.bic);
+      if (!bicResult.isValid) {
+        isValid = false;
+        newErrors.bic = bicResult.message || t('validation.invalidBic');
+      }
+    } else {
+      isValid = false;
+      newErrors.bic = t('validation.required');
+    }
+    
+    // Validate Creditor ID
+    if (clubInfo.creditorId) {
+      const creditorIdResult = validateCreditorID(clubInfo.creditorId);
+      if (!creditorIdResult.isValid) {
+        isValid = false;
+        newErrors.creditorId = creditorIdResult.message || t('validation.required');
+      }
+    } else {
+      isValid = false;
+      newErrors.creditorId = t('validation.required');
+    }
+    
+    // Validate other required fields
+    if (!clubInfo.name) {
+      isValid = false;
+      newErrors.name = t('validation.required');
+    }
+    
+    if (!clubInfo.purpose) {
+      isValid = false;
+      newErrors.purpose = t('validation.required');
+    }
+    
+    if (!clubInfo.reference) {
+      isValid = false;
+      newErrors.reference = t('validation.required');
+    }
+    
+    if (!clubInfo.membershipFee || clubInfo.membershipFee <= 0) {
+      isValid = false;
+      newErrors.membershipFee = t('validation.required');
+    }
+    
+    setErrors(newErrors);
+    setIsFormValid(isValid);
+    return isValid;
+  }, [clubInfo, t]);
 
   // Validate form whenever clubInfo changes
   useEffect(() => {
     validateForm();
-  }, [clubInfo]);
+  }, [validateForm]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type } = e.target;
@@ -35,72 +103,6 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
     } else {
       setClubInfo(prev => ({ ...prev, [name]: value }));
     }
-  };
-
-  const validateForm = (): boolean => {
-    const newErrors: Record<string, string> = {};
-    let isValid = true;
-    
-    // Validate IBAN
-    if (clubInfo.iban) {
-      const ibanResult = validateIBAN(clubInfo.iban);
-      if (!ibanResult.isValid) {
-        isValid = false;
-        newErrors.iban = ibanResult.message || 'IBAN ist ungültig.';
-      }
-    } else {
-      isValid = false;
-      newErrors.iban = 'IBAN ist erforderlich.';
-    }
-    
-    // Validate BIC
-    if (clubInfo.bic) {
-      const bicResult = validateBIC(clubInfo.bic);
-      if (!bicResult.isValid) {
-        isValid = false;
-        newErrors.bic = bicResult.message || 'BIC ist ungültig.';
-      }
-    } else {
-      isValid = false;
-      newErrors.bic = 'BIC ist erforderlich.';
-    }
-    
-    // Validate Creditor ID
-    if (clubInfo.creditorId) {
-      const creditorIdResult = validateCreditorID(clubInfo.creditorId);
-      if (!creditorIdResult.isValid) {
-        isValid = false;
-        newErrors.creditorId = creditorIdResult.message || 'Gläubiger-ID ist ungültig.';
-      }
-    } else {
-      isValid = false;
-      newErrors.creditorId = 'Gläubiger-ID ist erforderlich.';
-    }
-    
-    // Validate other required fields
-    if (!clubInfo.name) {
-      isValid = false;
-      newErrors.name = 'Vereinsname ist erforderlich.';
-    }
-    
-    if (!clubInfo.purpose) {
-      isValid = false;
-      newErrors.purpose = 'Verwendungszweck ist erforderlich.';
-    }
-    
-    if (!clubInfo.reference) {
-      isValid = false;
-      newErrors.reference = 'Referenz ist erforderlich.';
-    }
-    
-    if (!clubInfo.membershipFee || clubInfo.membershipFee <= 0) {
-      isValid = false;
-      newErrors.membershipFee = 'Gültiger Mitgliedsbeitrag ist erforderlich.';
-    }
-    
-    setErrors(newErrors);
-    setIsFormValid(isValid);
-    return isValid;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -124,13 +126,13 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md max-w-6xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">Vereinsinformationen</h2>
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">{t('clubInfo.title')}</h2>
       
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="col-span-2">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Vereinsname
+              {t('clubInfo.creditorName')}
             </label>
             <input
               type="text"
@@ -146,7 +148,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              IBAN
+              {t('clubInfo.creditorIban')}
             </label>
             <input
               type="text"
@@ -170,7 +172,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              BIC
+              {t('clubInfo.creditorBic')}
             </label>
             <input
               type="text"
@@ -187,7 +189,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Gläubiger-ID
+              {t('clubInfo.creditorId')}
             </label>
             <input
               type="text"
@@ -204,7 +206,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Ausführungsdatum (Tage in Zukunft)
+              {t('clubInfo.executionDate')}
             </label>
             <input
               type="number"
@@ -221,7 +223,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
           
           <div className="col-span-2">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Verwendungszweck
+              {t('clubInfo.purpose')}
             </label>
             <input
               type="text"
@@ -238,19 +240,22 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Referenz-Präfix
+              {t('clubInfo.mandateReference')}
             </label>
             <input
               type="text"
               name="reference"
               value={clubInfo.reference}
               onChange={handleChange}
-							placeholder="VEREIN.BEITRAG.2025"
+							placeholder="VEREIN.BEITRAG.2025-"
               className={`w-full px-3 py-2 border ${errors.reference ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
             />
             {errors.reference && (
               <p className="mt-1 text-sm text-red-600">{errors.reference}</p>
             )}
+            <p className="mt-1 text-sm text-gray-500">
+              {t('clubInfo.mandateReferenceHelp')}
+            </p>
           </div>
           
           <div>
@@ -284,7 +289,7 @@ const ClubInfoForm: React.FC<ClubInfoFormProps> = ({ clubInfo, setClubInfo, onNe
             }`}
             disabled={!isFormValid}
           >
-            Weiter
+            {t('clubInfo.continue')}
           </button>
         </div>
       </form>

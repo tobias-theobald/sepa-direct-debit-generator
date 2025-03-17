@@ -1,5 +1,6 @@
 import Papa from 'papaparse';
 import readXlsxFile from 'read-excel-file';
+import i18n from './i18n';
 
 export const parseFile = async (file: File): Promise<string[][]> => {
   const fileExtension = file.name.split('.').pop()?.toLowerCase();
@@ -9,7 +10,7 @@ export const parseFile = async (file: File): Promise<string[][]> => {
   } else if (fileExtension === 'xlsx' || fileExtension === 'xls') {
     return parseExcel(file);
   } else {
-    throw new Error('Nicht unterstütztes Dateiformat. Bitte laden Sie eine CSV- oder Excel-Datei hoch.');
+    throw new Error(i18n.t('fileUpload.errors.invalidFormat'));
   }
 };
 
@@ -37,8 +38,8 @@ const parseExcel = async (file: File): Promise<string[][]> => {
       )
     );
   } catch (error) {
-    console.error()
-    throw new Error('Fehler beim Einlesen der Excel-Datei. Bitte überprüfen Sie das Format.');
+    console.error('Error parsing Excel file', error);
+    throw new Error(i18n.t('fileUpload.errors.invalidFormat'));
   }
 };
 

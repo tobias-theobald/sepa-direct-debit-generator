@@ -43,7 +43,8 @@ export const generateSepaXML = (clubInfo: ClubInfo, members: Member[]): string =
       tx.debtorName = memberName;
       tx.debtorIBAN = member.iban;
 			// BIC is optional
-      tx.mandateId = member.mandateReference;
+      // Combine prefix from club info with suffix from member data for complete mandate reference
+      tx.mandateId = `${clubInfo.reference}${member.mandateReference}`;
       
       // Parse mandate date
       let mandateDate;
@@ -66,7 +67,9 @@ export const generateSepaXML = (clubInfo: ClubInfo, members: Member[]): string =
       tx.amount = fee;
       tx.currency = 'EUR';
       tx.remittanceInfo = clubInfo.purpose;
-      tx.end2endId = `${clubInfo.reference}-${member.mandateReference}`;
+      // Use the same combined mandate reference for end2endId
+      const combinedReference = `${clubInfo.reference}${member.mandateReference}`;
+      tx.end2endId = combinedReference;
       
       info.addTransaction(tx);
     });

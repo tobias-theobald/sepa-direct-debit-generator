@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { parseFile } from '../utils/fileParser';
 
 interface FileUploaderProps {
@@ -8,6 +9,7 @@ interface FileUploaderProps {
 }
 
 const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBack }) => {
+  const { t } = useTranslation();
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string[][]>([]);
   const [hasHeader, setHasHeader] = useState(true);
@@ -25,7 +27,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBac
     
     const fileExtension = selectedFile.name.split('.').pop()?.toLowerCase();
     if (fileExtension !== 'csv' && fileExtension !== 'xlsx' && fileExtension !== 'xls') {
-      setError('Bitte wählen Sie eine CSV- oder Excel-Datei aus.');
+      setError(t('fileUpload.errors.invalidFormat'));
       return;
     }
     
@@ -38,7 +40,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBac
       onDataLoaded(data, hasHeader);
       setIsLoading(false);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Fehler beim Einlesen der Datei.');
+      setError(err instanceof Error ? err.message : t('fileUpload.errors.invalidFormat'));
       setIsLoading(false);
     }
   };
@@ -59,7 +61,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBac
       
       const fileExtension = droppedFile.name.split('.').pop()?.toLowerCase();
       if (fileExtension !== 'csv' && fileExtension !== 'xlsx' && fileExtension !== 'xls') {
-        setError('Bitte wählen Sie eine CSV- oder Excel-Datei aus.');
+        setError(t('fileUpload.errors.invalidFormat'));
         return;
       }
       
@@ -78,7 +80,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBac
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md max-w-6xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">Datei hochladen</h2>
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">{t('steps.fileUpload')}</h2>
       
       <div
         className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-blue-500 transition-colors"
@@ -110,9 +112,9 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBac
         </svg>
         
         <p className="mt-2 text-sm text-gray-600">
-          {file ? file.name : 'Klicken Sie hier oder ziehen Sie eine Datei hierher, um sie hochzuladen'}
+          {file ? `${t('fileUpload.fileSelected')} ${file.name}` : `${t('fileUpload.dragDrop')} ${t('fileUpload.orClick')}`}
         </p>
-        <p className="mt-1 text-xs text-gray-500">CSV- oder Excel-Dateien (XLSX, XLS) bis zu 10MB</p>
+        <p className="mt-1 text-xs text-gray-500">{t('fileUpload.acceptedFormats')}</p>
       </div>
       
       {error && (
@@ -130,13 +132,13 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBac
           className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
         />
         <label htmlFor="hasHeader" className="ml-2 block text-sm text-gray-700">
-          Erste Zeile enthält Spaltenüberschriften
+          {t('fileUpload.hasHeaderRow')}
         </label>
       </div>
       
       {preview.length > 0 && (
         <div className="mt-6">
-          <h3 className="text-lg font-medium text-gray-800 mb-2">Vorschau:</h3>
+          <h3 className="text-lg font-medium text-gray-800 mb-2">{t('fileUpload.preview')}:</h3>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <tbody className="bg-white divide-y divide-gray-200">
@@ -168,7 +170,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBac
           onClick={onBack}
           className="px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
-          Zurück
+          {t('common.back')}
         </button>
         
         <button
@@ -181,7 +183,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onDataLoaded, onNext, onBac
               : 'hover:bg-blue-700'
           }`}
         >
-          {isLoading ? 'Wird geladen...' : 'Weiter'}
+          {isLoading ? t('common.loading') : t('common.next')}
         </button>
       </div>
     </div>
