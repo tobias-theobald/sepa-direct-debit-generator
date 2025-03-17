@@ -3,7 +3,7 @@
 A web application for generating SEPA (Single Euro Payments Area) direct debit XML files for clubs and organizations.
 
 Please note: 
-* This project has been generated with the help of bold.diy and Claude Code. It does not reflect my usual code style and quality. 
+* This project has been generated with the help of [bolt.diy](https://github.com/stackblitz-labs/bolt.diy) and [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview). It does not reflect my usual code style and quality. 
 * It is also not as well tested as I'd like it to be.
 
 ## What It Does
@@ -29,12 +29,12 @@ This application streamlines the process of creating standardized SEPA direct de
 ## Technologies Used
 
 - **Frontend**: React with TypeScript
-- **UI Framework**: Tailwind CSS
-- **Build Tool**: Vite
-- **Form Validation**: Zod for schema validation
+- **UI Framework**: [Tailwind CSS](https://tailwindcss.com)
+- **Build Tool**: [Vite](https://vite.dev)
+- **Form Validation**: [Zod](https://zod.dev) for schema validation
 - **File Parsing**: PapaParse for CSV, read-excel-file for Excel
-- **SEPA Generation**: sepa.js library
-- **Internationalization**: i18next and react-i18next
+- **SEPA Generation**: [sepa.js](https://github.com/kewisch/sepa.js) library (or rather a [PR of it by dreinon](https://github.com/kewisch/sepa.js/pull/138) which fixes some types)
+- **Internationalization**: [i18next and react-i18next](https://react.i18next.com)
 
 ## Project Structure
 
